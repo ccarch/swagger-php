@@ -39,6 +39,7 @@ if (function_exists('OpenApi\scan') === false) {
         $exclude = array_key_exists('exclude', $options) ? $options['exclude'] : null;
         $pattern = array_key_exists('pattern', $options) ? $options['pattern'] : null;
 
+        
         // Crawl directory and parse all files
         $finder = Util::finder($directory, $exclude, $pattern);
         foreach ($finder as $file) {
@@ -47,7 +48,8 @@ if (function_exists('OpenApi\scan') === false) {
         // Post processing
         $analysis->process($processors);
         // Validation (Generate notices & warnings)
-        $analysis->validate();
+        // $analysis->validate();
+        
         return $analysis->openapi;
     }
 }
